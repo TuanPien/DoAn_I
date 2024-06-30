@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <title>Danh mục sản phẩm</title>
+</head>
+<body>
+    <header>
+        <h1>Header</h1>
+    </header>
+    <section class="admin-content">
+        <div class="admin-content-left">
+            <ul>
+                <li><a href="#">Danh mục</a>
+                    <ul>
+                        <li><a href="#">Thêm danh mục</a></li>
+                        <li><a href="#">Danh sách danh mục</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Loại sản phẩm</a>
+                    <ul>
+                        <li><a href="#">Thêm loại sản phẩm</a></li>
+                        <li><a href="#">Danh sách loại sản phẩm</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Sản phẩm</a>
+                    <ul>
+                        <li><a href="#">Thêm sản phẩm</a></li>
+                        <li><a href="#">Danh sách sản phẩm</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="admin-content-right">
+            <div class="admin-content-right-product-add">
+                <form action="" method="post">
+                    <h1>Thêm Sản Phẩm</h1>
+                    <div class="button_container">
+                        <div class="text_fields">
+                            <label for="product_name">Nhập tên sản phẩm</label>
+                            <input type="text" name="product_name" id="product_name" placeholder="Tên sản phẩm">
+                        </div>
+                        <div class="text_fields brand_selection">
+                            <label for="brand_id">Chọn loại sản phẩm</label>
+                            <select name="brand_id" id="">
+                                <option value="#">Chọn loại sản phẩm</option>
+                                <option value="">Nam</option>
+                                <option value="">Nữ</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="button_container">
+                        <div class="text_fields">
+                            <label for="price">Nhập giá sản phẩm</label>
+                            <input type="text" name="price" id="" placeholder="Giá sản phẩm">
+                        </div>
+                        <div class="text_fields">
+                            <label for="sale_price">Nhập giá khuyến mãi</label>
+                            <input type="text" name="sale_price" id="" placeholder="Giá khuyến mãi">
+                        </div>
+                    </div>
+                    <div class="button_container">
+                        <div class="text_fields">
+                            <label for="product_description">Nhập mô tả sản phẩm</label>
+                            <textarea name="product_description" id="" placeholder="Mô tả sản phẩm"></textarea>
+                        </div>
+                    </div>
+                    <div class="button_container input_file_container">
+                        <div class="text_fields">
+                            <label for="ava_img">Chọn ảnh mô tả chính</label>
+                            <input type="file" name="ava_img" id="ava_img" class="inputfile">
+                        </div>
+                        <div class="text_fields">
+                            <label for="description_img">Chọn ảnh mô tả phụ</label>
+                            <input type="file" name="description_img" id="description_img" class="inputfile">
+                        </div>
+                    </div>
+                    <div class="button_container">
+                        <button type="submit">Thêm</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
