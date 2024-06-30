@@ -86,4 +86,4 @@ $get_delivery = $delivery -> get_delivery($order_id);
 
 
 
-        <script src="javascript/homepage.js"> </script>
+    <script src="javascript/homepage.js"> </script>

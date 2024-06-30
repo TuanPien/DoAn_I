@@ -205,6 +205,23 @@ class campaign{
         }
     }
 
+    public function time_check($campaign_id){
+        function manage_campaign($time_start, $time_end) {
+            $current_time = time();
+    
+            if ($current_time >= $time_start && $current_time < $time_end) {
+                echo "Chiến dịch đang diễn ra.";
+                // Gọi hàm bắt đầu chiến dịch
+                start_campaign();
+            } elseif ($current_time >= $time_end) {
+                echo "Chiến dịch đã kết thúc.";
+                // Gọi hàm kết thúc chiến dịch
+                end_campaign();
+            } else {
+                echo "Chiến dịch chưa bắt đầu.";
+            }
+        }
+    }
 
 }
 ?>
