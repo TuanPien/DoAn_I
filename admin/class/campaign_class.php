@@ -206,6 +206,7 @@ class campaign{
     }
 
     public function time_check($campaign_id){
+        $query = "SELECT * FROM "
         function manage_campaign($time_start, $time_end) {
             $current_time = time();
     
