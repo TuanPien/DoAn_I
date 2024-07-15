@@ -108,7 +108,7 @@ if ($get_brand) {
                             $show_brand = $brand->show_brand_by_category($result1['category_id']);
                             while ($result2 = $show_brand->fetch_assoc()) {
                             ?>
-                                <ul>
+                                <ul style="display: block;">
                                     <a href="homepage_brand_sort.php?brand_id=<?php echo $result2['brand_id'] ?>&user_id=<?php echo $user_id ?>" style="line-height: 2rem; margin: 0 0 0 12px;" class="show_link">
                                         <?php echo $result2['brand_name'] ?>
                                     </a>
@@ -122,7 +122,8 @@ if ($get_brand) {
                     ?>
                 </ul>
             </div>
-            <div class="cartegory-right row">
+            <div class="cartegory-right row" style="flex-direction: column;">
+                <div class="cartegory-right row">
                 <div class="cartegory-right-top-item">
                     <p style="font-size: 1.5rem;">Sản phẩm loại "<?php echo $temp_brand['brand_name'] ?>"</p>
                 </div>
@@ -136,10 +137,11 @@ if ($get_brand) {
                         <option value="">Gia thap den cao</option>
                     </select>
                 </div>
+                </div>
                 <?php
                 if ($show_product == false) {
                 ?>
-                    <div class="msg">
+                    <div  style="color: red; font-size: 1.5rem; margin: 2% 2%" >
                         <p>
                             <?php
                             echo "Chưa có sản phẩm nào loại này";

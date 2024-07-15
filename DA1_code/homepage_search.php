@@ -102,7 +102,7 @@ $show_product_hot = $product-> show_product_hot();
                             $show_brand = $brand->show_brand_by_category($result1['category_id']);
                             while ($result2 = $show_brand->fetch_assoc()) {
                             ?>
-                                <ul>
+                                <ul style="display: block;">
                                     <a href="homepage_brand_sort.php?brand_id=<?php echo $result2['brand_id'] ?>&user_id=<?php echo $user_id ?>" style="line-height: 2rem; margin: 0 0 0 12px;" class="show_link">
                                         <?php echo $result2['brand_name'] ?>
                                     </a>
@@ -116,7 +116,8 @@ $show_product_hot = $product-> show_product_hot();
                     ?>
                 </ul>
             </div>
-            <div class="cartegory-right row">
+            <div class="cartegory-right row" style="flex-direction: column;">
+                <div class="cartegory-right row">
                 <div class="cartegory-right-top-item">
                     <p style="font-size: 1.5rem;">Kết quả tìm kiếm của "<?php echo $search_key?>"</p>
                 </div>
@@ -130,10 +131,11 @@ $show_product_hot = $product-> show_product_hot();
                         <option value="">Gia thap den cao</option>
                     </select>
                 </div>
+                </div>
                 <div class="cartegory-right-content row">
                     <?php
                     if($show_product == false){
-                        die("<div style=\"width: 1000px; margin-top: -12%;\"><h2 style=\"color: #ee4e2e;\">Không tìm thấy sản phẩm nào</h2></div>");
+                        die("<div style=\"width: 1000px; \"><p style=\"color: #ee4e2e; font-size: 1.5rem; margin: 1% 2%;\">Không tìm thấy sản phẩm nào</p></div>");
                     }
                     while ($result = $show_product->fetch_assoc()) {
                     ?>

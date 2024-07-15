@@ -150,7 +150,7 @@ $show_product_hot = $product->show_product_hot();
                             $show_brand = $brand->show_brand_by_category($result1['category_id']);
                             while ($result2 = $show_brand->fetch_assoc()) {
                             ?>
-                                <ul>
+                                <ul style="display: block;">
                                     <a href="homepage_brand_sort.php?brand_id=<?php echo $result2['brand_id'] ?>&user_id=<?php echo $user_id ?>" style="line-height: 2rem; margin: 0 0 0 12px; display: flex; flex-direction: column" class="show_link">
                                         <?php echo $result2['brand_name'] ?>
                                     </a>
