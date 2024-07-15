@@ -3,6 +3,7 @@
 use LDAP\ResultEntry;
 
 include_once "database.php";
+include_once "campaign_class.php";
 
 class order{
     private $db;

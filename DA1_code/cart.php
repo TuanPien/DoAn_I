@@ -21,10 +21,10 @@ $count = $order->count($user_id)->fetch_assoc();
 $sum_price = $order->sum_buyer_price_discount($user_id)->fetch_assoc();
 
 $sum_down_payment = $order->sum_buyer_down_payment($user_id);
-if($sum_down_payment != false){
-    $sum_down_payment = $sum_down_payment -> fetch_assoc();
+if ($sum_down_payment != false) {
+    $sum_down_payment = $sum_down_payment->fetch_assoc();
     $sum_down_payment = $sum_down_payment['total_payment'];
-}else{
+} else {
     $sum_down_payment = 0;
 }
 
@@ -83,11 +83,11 @@ if($sum_down_payment != false){
                             <tr>
                                 <td>#<?php echo $temp['order_id'] ?></td>
                                 <td>#<?php echo $campaign_id ?></td>
-                                <td><a href="product.php?product_id=<?php echo $product_id?>&user_id=<?php echo $user_id?>"><img src="admin/uploads/product/<?php echo $get_product['product_main_image'] ?>"></a></td>
+                                <td><a href="product.php?product_id=<?php echo $product_id ?>&user_id=<?php echo $user_id ?>"><img src="admin/uploads/product/<?php echo $get_product['product_main_image'] ?>"></a></td>
                                 <td style="color: #e60000;"><?php echo $discount_value ?>%</td>
                                 <td><?php echo $temp['quantity'] ?></td>
-                                <td><?php echo $fm -> format_currency($temp['price_discount']) ?><sup>đ</sup></td>
-                                <td style="color: #e60000;"><?php echo $fm -> format_currency($temp['down_payment']) ?><sup>đ</sup></td>
+                                <td><?php echo $fm->format_currency($temp['price_discount']) ?><sup>đ</sup></td>
+                                <td style="color: #e60000;"><?php echo $fm->format_currency($temp['down_payment']) ?><sup>đ</sup></td>
                                 <td>
                                     <?php
                                     switch ($temp['order_condition']) {
@@ -102,21 +102,26 @@ if($sum_down_payment != false){
                                 </td>
                                 <td>
                                     <?php
-                                    switch ($temp['order_condition']){
-                                        case "0":
+                                    $time_check = $campaign->time_check($campaign_id);
+                                    if (is_bool($time_check) && $time_check == false && $temp['order_condition'] == 0) {
+                                        echo "Quá hạn";
+                                    } else {
+                                        switch ($temp['order_condition']) {
+                                            case "0":
                                     ?>
-                                            <a class="button" href="delivery.php?order_id=<?php echo $temp['order_id'] ?>&user_id=<?php echo $temp['user_id'] ?>">Thanh toán</a>
+                                                <a class="button" href="delivery.php?order_id=<?php echo $temp['order_id'] ?>&user_id=<?php echo $temp['user_id'] ?>">Thanh toán</a>
+                                            <?php
+                                                break;
+                                            case "1":
+                                            ?>
+                                                <a class="button" href="payment.php?order_id=<?php echo $temp['order_id'] ?>&user_id=<?php echo $temp['user_id'] ?>">Thanh toán</a>
                                     <?php
-                                            break;
-                                        case "1":
-                                    ?>
-                                            <a class="button" href="payment.php?order_id=<?php echo $temp['order_id'] ?>&user_id=<?php echo $temp['user_id'] ?>">Thanh toán</a>
-                                    <?php
-                                            
+                                                break;
+                                        }
                                     }
                                     ?>
                                 </td>
-                                <td><a class="show_link normal_link" href="delete_order.php?order_id=<?php echo $temp['order_id']?>&user_id=<?php echo $user_id?>">Xoá</a></td>
+                                <td><a class="show_link normal_link" href="delete_order.php?order_id=<?php echo $temp['order_id'] ?>&user_id=<?php echo $user_id ?>">Xoá</a></td>
                             </tr>
                     <?php
                             }
@@ -138,11 +143,11 @@ if($sum_down_payment != false){
                     </tr>
                     <tr>
                         <td>Tổng tiền đơn hàng</td>
-                        <td><?php echo $fm -> format_currency($sum_price['total_price']) ?><sup>đ</sup></td>
+                        <td><?php echo $fm->format_currency($sum_price['total_price']) ?><sup>đ</sup></td>
                     </tr>
                     <tr>
                         <td>Tổng tiền cọc còn thiếu</td>
-                        <td style="color: red; font-weight: 600;"><?php echo $fm -> format_currency($sum_down_payment) ?><sup>đ</sup></td>
+                        <td style="color: red; font-weight: 600;"><?php echo $fm->format_currency($sum_down_payment) ?><sup>đ</sup></td>
                     </tr>
                 </table>
                 <div class="cart-content-right-text">
