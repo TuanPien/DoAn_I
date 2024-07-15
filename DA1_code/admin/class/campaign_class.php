@@ -191,9 +191,15 @@ class campaign{
                 $query = "UPDATE campaign SET time_end = '$time_end' WHERE campaign_id = $campaign_id";
                 $result = $this -> db -> update($query);
                 header("location:list_campaign.php?user_id=".$user_id);
-                return $result; 
+                return $result;
             }
-        }else{
+        }elseif(!is_bool($time_check)){
+            $query = "UPDATE campaign SET time_end = '$time_end', time_start = '$time_start' WHERE campaign_id = $campaign_id";
+            $result = $this -> db -> update($query);
+            header("location:list_campaign.php?user_id=".$user_id);
+            return $result;
+        }
+        else{
             $query = "UPDATE campaign SET time_end = '$time_end' WHERE campaign_id = $campaign_id";
             $result = $this -> db -> update($query);
             header("location:list_campaign.php?user_id=".$user_id);
