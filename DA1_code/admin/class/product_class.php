@@ -168,7 +168,7 @@ class product{
         $div = explode('.', $file_name);
         $file_ext = strtolower(end($div));
         $unique_image = substr(md5(time()), 0, 10).'.'.$file_ext;
-        $uploaded_image = "uploads/".$unique_image;
+        $uploaded_image = "uploads/product/".$unique_image;
 
         if(!empty($file_name)){
             $query = "UPDATE product SET 
@@ -215,6 +215,26 @@ class product{
             if(file_exists($path)){
                 unlink($path);
             }
+            //Lấy những chiến dịch của sản phẩm này
+            $query = "SELECT * FROM campaign WHERE product_id = $product_id";
+            $check = $this -> db -> select($query);
+            if($check != false){
+                while($bin = $check -> fetch_assoc()){
+                    $campaign_id = $bin['campaign_id'];
+                    $query = "SELECT * FROM order_tbl WHERE campaign_id = $campaign_id";
+                    $check2 = $this -> db -> select($query);
+                    if($check2 != false){
+                        while($bin2 = $check2 -> fetch_assoc()){
+                            $order_id = $bin2['order_id'];
+                            $query = "DELETE FROM delivery WHERE order_id = $order_id";
+                            $result = $this -> db -> delete($query);
+                        }
+                    }
+                    $query = "DELETE FROM order_tbl WHERE campaign_id = $campaign_id";
+                    $result = $this -> db -> delete($query);
+                }
+            }
+
             //Xoá chiến dịch của những sản phẩm này 
             $query = "DELETE FROM campaign WHERE product_id = '$product_id'";
             $result = $this -> db -> delete($query);
